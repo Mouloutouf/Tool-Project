@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public Color myColor;
     public Vector2 myVector2;
+    public WrapMode myWrapMode;
 
 #if UNITY_EDITOR
     public bool foldoutState;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(GameManager))]
 [CanEditMultipleObjects] // Used to select multiple objects and edit their same component variables
@@ -22,10 +23,32 @@ public class GameManagerInspector : Editor
     {
         GUILayout.BeginVertical();
 
+        EditorGUILayout.LabelField(EditorGUIUtility.labelWidth.ToString());
+
+        int oldIndent = EditorGUI.indentLevel;
+        EditorGUI.indentLevel += 2;
         manager.myColor = EditorGUILayout.ColorField("My Color", manager.myColor);
-        manager.myTransform = EditorGUILayout.ObjectField("My Transform", manager.myTransform, typeof(Transform), true) as Transform;
+        EditorGUI.indentLevel = oldIndent;
+
+        string[] options = new string[] { "Option 1", "Option 2", "Option 3" };
+        manager.myWrapMode = (WrapMode)EditorGUILayout.Popup((int)manager.myWrapMode, options);
+
+        EditorGUILayout.HelpBox("This is a help box, read what it says or stay blind", MessageType.Warning);
+
+        EditorGUI.BeginChangeCheck();
+        Transform transformResult = EditorGUILayout.ObjectField("My Transform", manager.myTransform, typeof(Transform), true) as Transform;
+        bool userChanged = EditorGUI.EndChangeCheck();
+        if (userChanged) // User changed something
+        {
+            Debug.Log("something changed");
+            Undo.RecordObject(manager, "Reset transform");
+            manager.myTransform = transformResult;
+        }
 
         #region Buttons
+
+        Color baseColor = GUI.color;
+        GUI.color = Color.green;
 
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Auto Set References"))
@@ -38,7 +61,7 @@ public class GameManagerInspector : Editor
         }
         GUILayout.EndHorizontal();
 
-        GUILayout.EndVertical();
+        GUI.color = baseColor;
 
         #endregion
 
@@ -47,6 +70,11 @@ public class GameManagerInspector : Editor
         {
             EditorGUILayout.LabelField("Hello guys");
         }
+
+        GUILayout.EndVertical();
+
+        EditorUtility.SetDirty(manager);
+        //EditorSceneManager.MarkAllScenesDirty();
     }
 
     void AutoSetReferences()
