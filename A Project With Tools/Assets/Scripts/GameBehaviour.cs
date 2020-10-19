@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct EnemyProfile
+{
+    public Color color;
+    public float speed;
+    public Vector3 spawnPosition;
+    public AnimationCurve acceleration;
+}
+
 public class GameBehaviour : MonoBehaviour
 {
     public Color myColor;
@@ -14,15 +23,7 @@ public class GameBehaviour : MonoBehaviour
     public float mySlider;
     public Vector2 myVector2;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string[] myStrings;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public EnemyProfile myEnemyProfile;
 }

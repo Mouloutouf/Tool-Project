@@ -292,6 +292,17 @@ MonoBehaviour:
   myBigString: 
   mySlider: 0
   myVector2: {x: 0, y: 0}
+  myStrings: []
+  myEnemyProfile:
+    color: {r: 0, g: 0, b: 0, a: 0}
+    speed: 0
+    spawnPosition: {x: 0, y: 0, z: 0}
+    acceleration:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!4 &1835520518
 Transform:
   m_ObjectHideFlags: 0
