@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 0
   environmentColor: {r: 0, g: 0, b: 0, a: 0}
-  levelValues: 
+  levelValues: 0000000000000000000000000000000000000000
