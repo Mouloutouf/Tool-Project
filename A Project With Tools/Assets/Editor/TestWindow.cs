@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.IO;
 
 public class TestWindow : EditorWindow
 {
@@ -29,8 +30,6 @@ public class TestWindow : EditorWindow
 
     public void OnGUI()
     {
-        // DisplayTest();
-
         if (currentProfile == null)
         {
             EditorGUILayout.LabelField("Currently displayed profile is null");
@@ -60,18 +59,24 @@ public class TestWindow : EditorWindow
 
             Repaint();
         }
+
+        DisplayTest();
     }
 
     void DisplayTest()
     {
-        EditorGUI.DrawRect(new Rect(30, 30, 100, 100), Color.green);
+        //EditorGUI.DrawRect(new Rect(30, 30, 100, 100), Color.green);
 
         Rect pos = this.position;
         float w = pos.width;
         float h = pos.height;
 
         Rect closeButtonRect = new Rect(w*0.1f, h*0.2f, w*0.6f, h*0.3f);
-        if (GUI.Button(closeButtonRect, "Close"))
-            this.Close();
+        if (GUI.Button(closeButtonRect, "Export as JSON"))
+        {
+            string curveAsJSON = JsonUtility.ToJson(currentProfile, true);
+            string filePath = "Assets/myCurve.json";
+            File.WriteAllText(filePath, curveAsJSON);
+        }
     }
 }

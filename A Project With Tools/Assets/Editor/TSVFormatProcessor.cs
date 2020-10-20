@@ -29,11 +29,4 @@ public class TSVFormatProcessor : AssetPostprocessor
             File.WriteAllText(str, content);
         }
     }
-
-    void ConvertToCSV(string assetPath)
-    {
-        AssetDatabase.RenameAsset(assetPath, assetPath.Replace(".tsv", ".csv"));
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-    }
 }
