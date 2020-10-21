@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
-[CustomEditor(typeof(GameManager))]
+[CustomEditor(typeof(GameHolder))]
 [CanEditMultipleObjects] // Used to select multiple objects and edit their same component variables
-public class GameManagerInspector : Editor
+public class GameHolderInspector : Editor
 {
-    GameManager manager;
+    GameHolder manager;
 
     public void OnEnable()
     {
-        manager = target as GameManager;
+        manager = target as GameHolder;
 
         Undo.undoRedoPerformed += AfterUndo;
     }

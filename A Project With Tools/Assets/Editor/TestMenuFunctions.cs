@@ -10,7 +10,7 @@ public class TestMenuFunctions
     {
         Debug.Log("Initialize find references...");
 
-        GameManager manager = Object.FindObjectOfType<GameManager>();
+        GameHolder manager = Object.FindObjectOfType<GameHolder>();
 
         Undo.RecordObject(manager, "Set references");
 

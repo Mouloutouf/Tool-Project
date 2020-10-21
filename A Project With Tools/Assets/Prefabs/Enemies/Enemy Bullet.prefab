@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1556051176220292963, guid: 78daff2f44a0f474db13a4e79ed0b140, type: 3}
+      propertyPath: hitEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 462a53bf1d45c8946bc4a43f623cbaf9, type: 2}
+    - target: {fileID: 1556051176220292963, guid: 78daff2f44a0f474db13a4e79ed0b140, type: 3}
+      propertyPath: fixedTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3568603137799088144, guid: 78daff2f44a0f474db13a4e79ed0b140, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.7337102
