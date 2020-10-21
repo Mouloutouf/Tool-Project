@@ -5,14 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public Rigidbody2D rb;
+    private Vector2 movement;
     
     void Update()
     {
-        moveCharacter(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+    }
+    private void FixedUpdate()
+    {
+        moveCharacter(movement);
     }
 
     void moveCharacter(Vector2 direction)
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
 }
