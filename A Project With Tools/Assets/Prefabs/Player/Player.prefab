@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f721d722784f4b9442d19be000a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
   character: {fileID: 5919603353779837713}
 --- !u!114 &5919603353779837719
 MonoBehaviour:
@@ -118,8 +119,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -745506313
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4b741840a91bf284688ad080ad477692, type: 3}
   m_Color: {r: 0, g: 0.638464, b: 1, a: 1}
@@ -191,13 +192,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0ee6c7973fba0489a66f8041f0dcf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 668e0dce59ef9ff479664859ae2f82bb, type: 2}
+  Event: {fileID: 11400000, guid: 462a53bf1d45c8946bc4a43f623cbaf9, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6871268282305069749}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: Death
+        m_MethodName: Hit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -223,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5919603354257051155
 Transform:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5919603355633552025}
   m_Layer: 0
-  m_Name: Bullet Spawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

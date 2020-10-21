@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class Shoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
 
     public Transform spawn;
-
     public Transform container;
 
+    public void InstantiateShot()
+    {
+        Instantiate(bulletPrefab, spawn.position, spawn.rotation, container);
+    }
+}
+
+public class PlayerShoot : Shoot
+{
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(bulletPrefab, spawn.position, spawn.rotation, container);
+            InstantiateShot();
         }
     }
 }
