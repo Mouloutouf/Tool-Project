@@ -6,20 +6,19 @@ public class BulletMovement : Movement
 {
     public Transform target;
     public bool fixedTarget;
-    private Vector2 direction;
-
-    public GameEvent hitEvent;
+    public Vector2 direction;
 
     public float lifetime;
 
     private void Start()
     {
-        if (fixedTarget) direction = target.position;
+        if (fixedTarget) direction = target.position - transform.position;
     }
 
     private void FixedUpdate()
     {
-        Move(Vector2.up);
+        Vector2 dir = Vector2.ClampMagnitude(direction, 1f);
+        Move(dir);
 
         StartCoroutine(Lifetime());
     }
@@ -33,7 +32,9 @@ public class BulletMovement : Movement
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        hitEvent.Raise();
+        if (collision.gameObject.tag == "Bullet") return;
+
+        collision.GetComponentInParent<PlayerCharacter>().Hit();
 
         Destroy(gameObject);
     }

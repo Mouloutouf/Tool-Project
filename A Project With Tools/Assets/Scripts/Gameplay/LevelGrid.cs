@@ -18,7 +18,7 @@ public class LevelGrid : MonoBehaviour
 
     public int tileSize;
 
-    private Vector2[][] positions;
+    private Vector2[,] positions;
 
     public List<LevelChunk> chunks;
 
@@ -31,30 +31,28 @@ public class LevelGrid : MonoBehaviour
 
     void CreateGrid()
     {
-        positions = new Vector2[(rows / tileSize)][];
+        positions = new Vector2[(rows / tileSize), (columns / tileSize)];
 
-        for (int i = 0; i < positions.Length; i++)
+        for (int i = 0; i < positions.GetLength(0); i++)
         {
-            positions[i] = new Vector2[(columns / tileSize)];
-
-            for (int u = 0; u < positions[i].Length; u++)
+            for (int u = 0; u < positions.GetLength(1); u++)
             {
-                positions[i][u] = new Vector2((tileSize / 2) + i, (tileSize / 2) + u);
+                positions[i,u] = new Vector2((tileSize / 2) + i, (tileSize / 2) + u);
             }
         }
     }
 
     void SpawnElements(LevelChunk chunk)
     {
-        Element[][] elements = chunk.elements;
+        Element[,] elements = chunk.elements;
 
-        for (int v = 0; v < elements.Length; v++)
+        for (int v = 0; v < elements.GetLength(0); v++)
         {
-            for (int w = 0; w < elements[v].Length; w++)
+            for (int w = 0; w < elements.GetLength(1); w++)
             {
-                Element spawned = elements[v][w];
+                Element spawned = elements[v,w];
 
-                Instantiate(spawned.prefab, positions[v][w], Quaternion.identity);
+                Instantiate(spawned.prefab, positions[v,w], Quaternion.identity);
             }
         }
     }

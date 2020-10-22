@@ -149,7 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 25664178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d270b3b48f3609b42a0a49d63b34a0f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 257e1133fb7dd60469d26ee2e459f9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
   camTransform: {fileID: 0}
   audioListener: {fileID: 0}
   mySpeed: 0
-  myColor: {r: 0.7264151, g: 0.058250275, b: 0.13875209, a: 1}
+  myColor: {r: 0, g: 0, b: 0, a: 0}
   myVector2: {x: 0, y: 0}
   myWrapMode: 0
   foldoutState: 0

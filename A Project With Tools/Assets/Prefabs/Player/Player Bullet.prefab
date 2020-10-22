@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2794082670067812516}
   m_Layer: 9
   m_Name: Player Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   rb: {fileID: 458096924811085594}
-  hitEvent: {fileID: 11400000, guid: 668e0dce59ef9ff479664859ae2f82bb, type: 2}
+  target: {fileID: 0}
+  fixedTarget: 0
+  direction: {x: 0, y: 1}
   lifetime: 3
 --- !u!212 &3568603137799088145
 SpriteRenderer:

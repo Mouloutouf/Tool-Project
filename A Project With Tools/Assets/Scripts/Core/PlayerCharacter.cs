@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
 
     public GameObject character;
 
-    public void Death()
+    public virtual void Death()
     {
         Destroy(character);
     }
@@ -19,5 +19,15 @@ public class Character : MonoBehaviour
         health--;
 
         if (health <= 0) Death();
+    }
+}
+
+public class PlayerCharacter : Character
+{
+    public GameManager gameManager;
+
+    public override void Death()
+    {
+        gameManager.GameOver();
     }
 }

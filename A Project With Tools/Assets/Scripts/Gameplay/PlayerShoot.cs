@@ -9,9 +9,11 @@ public class Shoot : MonoBehaviour
     public Transform spawn;
     public Transform container;
 
-    public void InstantiateShot()
+    public GameObject InstantiateShot()
     {
-        Instantiate(bulletPrefab, spawn.position, spawn.rotation, container);
+        GameObject shot = Instantiate(bulletPrefab, spawn.position, spawn.rotation, container);
+
+        return shot;
     }
 }
 

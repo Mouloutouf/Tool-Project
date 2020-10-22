@@ -71,10 +71,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2852378003396122706}
-  - component: {fileID: 168066927135100908}
+  - component: {fileID: 4086885650691650445}
   - component: {fileID: 8227189024731785904}
   - component: {fileID: 2852378003396122707}
-  - component: {fileID: 4320942096772458581}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -98,7 +97,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &168066927135100908
+--- !u!114 &4086885650691650445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,11 +106,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2852378003396122710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2f721d722784f4b9442d19be000a8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 991e79b1bee929f4e90f0016a5e1d7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
   character: {fileID: 2852378003396122710}
+  scoreValue: 100
+  scoreData: {fileID: 11400000, guid: 5b580fb4068832048a6d3638701aa148, type: 2}
+  scoreEvent: {fileID: 11400000, guid: d44e9b16a651fd34185d5b4b5807a49a, type: 2}
 --- !u!114 &8227189024731785904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +129,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5601769885762692014, guid: c91e32352a3f46748bcde521aff1419e, type: 3}
   spawn: {fileID: 8723203989640706485}
   container: {fileID: 0}
+  breakTime: {x: 2, y: 5}
+  shootTime: 0.1
+  salveAmount: 2
 --- !u!212 &2852378003396122707
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -178,34 +183,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4320942096772458581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2852378003396122710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd0ee6c7973fba0489a66f8041f0dcf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 668e0dce59ef9ff479664859ae2f82bb, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 168066927135100908}
-        m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: Hit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6044988688882009184
 GameObject:
   m_ObjectHideFlags: 0
