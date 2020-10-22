@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     public GameObject MenuInterface;
+    public GameObject GameInterface;
 
     public void GameOver()
     {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         Destroy(player);
 
         MenuInterface.SetActive(true);
+        GameInterface.SetActive(false);
     }
 
     public void UpdateScore()

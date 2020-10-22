@@ -32,9 +32,9 @@ public class BulletMovement : Movement
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bullet") return;
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Wall") return;
 
-        collision.GetComponentInParent<PlayerCharacter>().Hit();
+        collision.GetComponentInParent<Character>().Hit();
 
         Destroy(gameObject);
     }

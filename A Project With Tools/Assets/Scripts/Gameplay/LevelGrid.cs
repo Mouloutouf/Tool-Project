@@ -9,6 +9,7 @@ public class Element
 {
     public GameObject prefab;
     public Elements type;
+    public Color color;
 }
 
 public class LevelGrid : MonoBehaviour
@@ -26,18 +27,18 @@ public class LevelGrid : MonoBehaviour
     {
         CreateGrid();
 
-        SpawnElements(chunks[0]); // Default
+        //SpawnElements(chunks[0]); // Default
     }
 
     void CreateGrid()
     {
-        positions = new Vector2[(rows / (int)tileSize), (columns / (int)tileSize)];
+        positions = new Vector2[rows, columns];
 
         for (int i = 0; i < positions.GetLength(0); i++)
         {
             for (int u = 0; u < positions.GetLength(1); u++)
             {
-                positions[i,u] = new Vector2((tileSize / 2) + i, (tileSize / 2) + u);
+                positions[i,u] = new Vector2((tileSize / 2f) + tileSize * i, (tileSize / 2f) + tileSize * u);
             }
         }
     }

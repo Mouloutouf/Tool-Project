@@ -6,7 +6,11 @@ using System.IO;
 
 public class LevelEditorWindow : EditorWindow
 {
-    LevelChunk currentProfile;
+    LevelChunk currentChunk;
+
+    Element currentElement = new Element { prefab = null, type = Elements.None, color = Color.white };
+
+    Color hoverColor = Color.grey;
 
     [MenuItem("Window/Level Editor Window")]
     public static void Init()
@@ -23,68 +27,71 @@ public class LevelEditorWindow : EditorWindow
         LevelEditorWindow window = EditorWindow.GetWindow(typeof(LevelEditorWindow)) as LevelEditorWindow;
 
         // Initialize Window
-        window.currentProfile = profile;
+        window.currentChunk = profile;
 
         window.Show();
     }
 
     public void OnGUI()
     {
-        if (currentProfile == null)
+        if (currentChunk == null)
         {
             EditorGUILayout.LabelField("Currently displayed profile is null");
             return;
         }
 
-        if (currentProfile.elements.Length > 0)
+        if (currentChunk.elements.Length > 0)
         {
-            float tileWidth = 25f;
-            float tileHeight = 25f;
+            Buttons();
 
-            int rowAmount = currentProfile.elements.GetLength(0);
-            int columnAmount = currentProfile.elements.GetLength(1);
-
-            float offset = 30f;
-            float increment = 2f;
-
-            Event currentEvent = Event.current;
-
-            for (int i = 0; i < rowAmount; i++)
-            {
-                for (int u = 0; u < columnAmount; u++)
-                {
-                    Rect squareRect = new Rect(offset + (increment * i) + (tileWidth * i), offset + (increment * u) + (tileHeight * u), tileWidth, tileHeight);
-
-                    EditorGUIUtility.AddCursorRect(squareRect, MouseCursor.Arrow);
-
-                    if (squareRect.Contains(currentEvent.mousePosition))
-                        EditorGUI.DrawRect(squareRect, Color.grey);
-                    else EditorGUI.DrawRect(squareRect, Color.white);
-
-                    if (GUI.Button(squareRect, "0")) currentProfile.elements[i, u] = new Element { prefab = null, type = Elements.Enemy };
-                }
-            }
+            DisplayLevelGrid();
 
             Repaint();
         }
-
-        //DisplayTest();
+    }
+    
+    void Buttons()
+    {
+        if (GUILayout.Button("Enemy")) currentElement = new Element { prefab = currentChunk.enemyPrefab, type = Elements.Enemy, color = Color.red };
+        if (GUILayout.Button("Wall")) currentElement = new Element { prefab = currentChunk.wallPrefab, type = Elements.Wall, color = Color.yellow };
+        if (GUILayout.Button("Erase")) currentElement = new Element { prefab = null, type = Elements.None, color = Color.white };
+        
+        EditorGUILayout.LabelField(currentElement.type.ToString());
     }
 
-    void DisplayTest()
+    void DisplayLevelGrid()
     {
-        //EditorGUI.DrawRect(new Rect(30, 30, 100, 100), Color.green);
+        float tileWidth = 25f;
+        float tileHeight = 25f;
 
-        Rect pos = this.position;
-        float w = pos.width;
-        float h = pos.height;
+        int rowAmount = currentChunk.elements.GetLength(0);
+        int columnAmount = currentChunk.elements.GetLength(1);
 
-        Rect closeButtonRect = new Rect(w * 0.1f, h * 0.2f, w * 0.6f, h * 0.3f);
-        if (GUI.Button(closeButtonRect, "Export as JSON"))
+        float extraOffset = 60f;
+        float offset = 30f;
+        float increment = 2f;
+
+        Event currentEvent = Event.current;
+
+        for (int i = 0; i < rowAmount; i++)
         {
-            string curveAsJSON = JsonUtility.ToJson(currentProfile, true);
-            string filePath = "Assets/myCurve.json";
-            File.WriteAllText(filePath, curveAsJSON);
+            for (int u = 0; u < columnAmount; u++)
+            {
+                Rect squareRect = new Rect(offset + (increment * i) + (tileWidth * i), extraOffset + offset + (increment * u) + (tileHeight * u), tileWidth, tileHeight);
+
+                EditorGUIUtility.AddCursorRect(squareRect, MouseCursor.Arrow);
+
+                if (squareRect.Contains(currentEvent.mousePosition))
+                {
+                    EditorGUI.DrawRect(squareRect, hoverColor);
+
+                    if (currentEvent.type == EventType.MouseDown)
+                    {
+                        currentChunk.elements[i, u] = currentElement;
+                    }
+                }
+                else EditorGUI.DrawRect(squareRect, currentChunk.elements[i, u].color);
+            }
         }
     }
 }

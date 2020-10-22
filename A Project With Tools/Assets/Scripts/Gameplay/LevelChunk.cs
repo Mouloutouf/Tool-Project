@@ -10,6 +10,9 @@ public class LevelChunk : ScriptableObject
     public int rows;
     public int columns;
 
+    public GameObject enemyPrefab;
+    public GameObject wallPrefab;
+
     public Element[,] InitializeElements(int rows, int columns)
     {
         Element[,] _elements = new Element[rows, columns];
@@ -18,7 +21,7 @@ public class LevelChunk : ScriptableObject
         {
             for (int u = 0; u < _elements.GetLength(1); u++)
             {
-                _elements[i, u] = new Element { prefab = null, type = Elements.None };
+                _elements[i, u] = new Element { prefab = null, type = Elements.None, color = Color.white };
             }
         }
 

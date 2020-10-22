@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1556051176220292963}
   - component: {fileID: 3568603137799088145}
   - component: {fileID: 458096924811085594}
-  - component: {fileID: 2794082670067812516}
+  - component: {fileID: 5699752329045915992}
   m_Layer: 9
   m_Name: Player Bullet
   m_TagString: Bullet
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &2794082670067812516
+--- !u!60 &5699752329045915992
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.25, y: 0.25}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -149,7 +149,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.25, y: -0.000000010927847}
-      - {x: 0.000000021855694, y: -0.25}
-      - {x: 0.25, y: 0.0000000029812202}
+    - - {x: 0, y: 0.125}
+      - {x: -0.125, y: -0.0000000054639235}
+      - {x: 0.000000010927847, y: -0.125}
+      - {x: 0.125, y: 0.0000000014906101}

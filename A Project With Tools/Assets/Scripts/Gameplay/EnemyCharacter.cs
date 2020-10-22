@@ -16,8 +16,6 @@ public class EnemyCharacter : Character
         scoreData.Value += scoreValue;
         scoreEvent.Raise();
 
-
-
         base.Death();
     }
 }

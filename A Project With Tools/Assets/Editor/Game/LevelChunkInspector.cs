@@ -18,6 +18,8 @@ public class LevelChunkInspector : Editor
 
     public override void OnInspectorGUI()
     {
+        base.OnInspectorGUI();
+
         serializedObject.Update();
 
         EditorGUILayout.BeginHorizontal();
@@ -34,24 +36,6 @@ public class LevelChunkInspector : Editor
             isElementList = true;
         }
         GUI.enabled = true;
-
-        //EditorGUILayout.BeginHorizontal();
-        //myElements.arraySize = EditorGUILayout.IntField()
-
-        //if (GUILayout.Button("Add Column")) myElements.arraySize++;
-        //if (GUILayout.Button("Add Row") && myElements.arraySize > 0) myStrings.arraySize--;
-        //EditorGUILayout.EndHorizontal();
-        //EditorGUILayout.BeginHorizontal();
-        //if (GUILayout.Button("Remove Row")) myElements.arraySize++;
-        //if (GUILayout.Button("Remove Column") && myElements.arraySize > 0) myStrings.arraySize--;
-        //EditorGUILayout.EndHorizontal();
-        //if (myStrings.arraySize > 0)
-        //{
-        //    for (int i = 0; i < myStrings.arraySize; i++)
-        //    {
-        //        EditorGUILayout.PropertyField(myStrings.GetArrayElementAtIndex(i), new GUIContent("Text Field", "This is a really nice tool tip"));
-        //    }
-        //}
 
         GUI.enabled = isElementList;
         if (GUILayout.Button("Open Editor"))

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901afc2cf2b2c2a4b8655c32af68ec6b, type: 3}
   m_Name: First Chunk
   m_EditorClassIdentifier: 
-  rows: 2
-  columns: 2
+  rows: 20
+  columns: 20
+  enemyPrefab: {fileID: 2852378003396122710, guid: 91d6b2a3f55ef57439a580281bf98144, type: 3}
+  wallPrefab: {fileID: 4736585377632135128, guid: 6e19888bb53a8c34887aa247dce41990, type: 3}
