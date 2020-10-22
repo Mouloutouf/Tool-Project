@@ -16,7 +16,7 @@ public class LevelGrid : MonoBehaviour
     public int rows;
     public int columns;
 
-    public int tileSize;
+    public float tileSize;
 
     private Vector2[,] positions;
 
@@ -31,7 +31,7 @@ public class LevelGrid : MonoBehaviour
 
     void CreateGrid()
     {
-        positions = new Vector2[(rows / tileSize), (columns / tileSize)];
+        positions = new Vector2[(rows / (int)tileSize), (columns / (int)tileSize)];
 
         for (int i = 0; i < positions.GetLength(0); i++)
         {

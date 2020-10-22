@@ -754,14 +754,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095359698}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b0c46b4eac480c4485f457950a6466b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 18
-  columns: 10
-  tileSize: 1
+  rows: 20
+  columns: 20
+  tileSize: 0.5
   chunks:
   - {fileID: 11400000, guid: 442c592921b0b27418d5c5f26151a617, type: 2}
 --- !u!1001 &1132204079

@@ -38,16 +38,16 @@ public class LevelEditorWindow : EditorWindow
 
         if (currentProfile.elements.Length > 0)
         {
-            float tileWidth = 50f;
-            float tileHeight = 50f;
+            float tileWidth = 25f;
+            float tileHeight = 25f;
 
             int rowAmount = currentProfile.elements.GetLength(0);
             int columnAmount = currentProfile.elements.GetLength(1);
 
-            Event currentEvent = Event.current;
-
             float offset = 30f;
             float increment = 2f;
+
+            Event currentEvent = Event.current;
 
             for (int i = 0; i < rowAmount; i++)
             {
@@ -61,7 +61,7 @@ public class LevelEditorWindow : EditorWindow
                         EditorGUI.DrawRect(squareRect, Color.grey);
                     else EditorGUI.DrawRect(squareRect, Color.white);
 
-                    if (GUI.Button(squareRect, "yes")) currentProfile.elements[i, u] = new Element { prefab = null, type = Elements.Enemy };
+                    if (GUI.Button(squareRect, "0")) currentProfile.elements[i, u] = new Element { prefab = null, type = Elements.Enemy };
                 }
             }
 
