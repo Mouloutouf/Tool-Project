@@ -27,7 +27,7 @@ public class LevelGrid : MonoBehaviour
     {
         CreateGrid();
 
-        //SpawnElements(chunks[0]); // Default
+        SpawnElements(chunks[0]); // Default
     }
 
     void CreateGrid()

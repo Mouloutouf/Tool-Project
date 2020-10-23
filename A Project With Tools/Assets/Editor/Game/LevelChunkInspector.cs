@@ -9,19 +9,26 @@ public class LevelChunkInspector : Editor
     LevelChunk levelChunk;
     SerializedProperty myElements;
 
+    SerializedProperty myEnemyPrefab;
+    SerializedProperty myWallPrefab;
+    
     private void OnEnable()
     {
         levelChunk = target as LevelChunk;
 
         myElements = serializedObject.FindProperty(nameof(levelChunk.elements));
+
+        myEnemyPrefab = serializedObject.FindProperty(nameof(levelChunk.enemyPrefab));
+        myWallPrefab = serializedObject.FindProperty(nameof(levelChunk.wallPrefab));
     }
 
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
-
         serializedObject.Update();
 
+        EditorGUILayout.PropertyField(myEnemyPrefab);
+        EditorGUILayout.PropertyField(myWallPrefab);
+        
         EditorGUILayout.BeginHorizontal();
         levelChunk.rows = EditorGUILayout.IntField(levelChunk.rows);
         levelChunk.columns = EditorGUILayout.IntField(levelChunk.columns);
@@ -36,12 +43,12 @@ public class LevelChunkInspector : Editor
             isElementList = true;
         }
         GUI.enabled = true;
-
+        
         GUI.enabled = isElementList;
         if (GUILayout.Button("Open Editor"))
             LevelEditorWindow.InitWithContent(target as LevelChunk);
         GUI.enabled = true;
-
+        
         serializedObject.ApplyModifiedProperties();
     }
 }

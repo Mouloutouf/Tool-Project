@@ -8,9 +8,11 @@ public class LevelEditorWindow : EditorWindow
 {
     LevelChunk currentChunk;
 
+    SerializedProperty serializedElements;
     Element currentElement = new Element { prefab = null, type = Elements.None, color = Color.white };
 
     Color hoverColor = Color.grey;
+    bool isMousePressed = false;
 
     [MenuItem("Window/Level Editor Window")]
     public static void Init()
@@ -28,6 +30,8 @@ public class LevelEditorWindow : EditorWindow
 
         // Initialize Window
         window.currentChunk = profile;
+
+        // window.serializedElements = window.currentChunk.serializedObject.FindProperty(nameof(window.currentChunk.elements));
 
         window.Show();
     }
@@ -56,7 +60,9 @@ public class LevelEditorWindow : EditorWindow
         if (GUILayout.Button("Wall")) currentElement = new Element { prefab = currentChunk.wallPrefab, type = Elements.Wall, color = Color.yellow };
         if (GUILayout.Button("Erase")) currentElement = new Element { prefab = null, type = Elements.None, color = Color.white };
         
-        EditorGUILayout.LabelField(currentElement.type.ToString());
+        EditorGUILayout.LabelField("Current Brush Selected : " + currentElement.type.ToString());
+
+        // if (GUILayout.Button("Save Level")) currentChunk.elements
     }
 
     void DisplayLevelGrid()
@@ -67,11 +73,15 @@ public class LevelEditorWindow : EditorWindow
         int rowAmount = currentChunk.elements.GetLength(0);
         int columnAmount = currentChunk.elements.GetLength(1);
 
-        float extraOffset = 60f;
+        float extraOffset = 70f;
         float offset = 30f;
         float increment = 2f;
 
         Event currentEvent = Event.current;
+
+        if (currentEvent.type == EventType.MouseDown) isMousePressed = true;
+
+        if (currentEvent.type == EventType.MouseUp) isMousePressed = false;
 
         for (int i = 0; i < rowAmount; i++)
         {
@@ -85,7 +95,7 @@ public class LevelEditorWindow : EditorWindow
                 {
                     EditorGUI.DrawRect(squareRect, hoverColor);
 
-                    if (currentEvent.type == EventType.MouseDown)
+                    if (isMousePressed)
                     {
                         currentChunk.elements[i, u] = currentElement;
                     }
